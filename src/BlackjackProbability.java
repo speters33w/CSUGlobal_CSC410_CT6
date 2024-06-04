@@ -98,17 +98,16 @@ public class BlackjackProbability {
      * @return the probability of the dealer's other card being an 8, 9, or face card.
      */
     public static double probability(Deck deck){
-        List<Card> faceCards = Arrays.asList(Card.JACK, Card.QUEEN, Card.KING);
-        int deckSize = deck.cards.size();
         System.out.println("For this exercise we are asked to determine the probability of the dealer's other card " +
                            "being an 8, 9, or face card.\n");
+        List<Card> faceCards = Arrays.asList(Card.JACK, Card.QUEEN, Card.KING);
         int count = 0;
         for(Card card : deck.cards){
             if(faceCards.contains(card) || card.equals(Card.EIGHT) || card.equals(Card.NINE)){
                 count++;
             }
         }
-        return (double) count / deckSize;
+        return (double) count / deck.cards.size();
     }
 
     /**
@@ -122,7 +121,7 @@ public class BlackjackProbability {
         for(Card card : cardsShown){
             deck.cards.remove(card);
         }
-        System.out.printf("The probability of the dealer's other card being an 8, 9, or face card is %.0f%%",
+        System.out.printf("The probability of the dealer's other card being an 8, 9, or face card is %.1f%%",
                 probability(deck) * 100);
     }
 }
